@@ -1,0 +1,73 @@
+#footer {
+  padding: 60px 0 30px 0;
+  background:rgba(18, 18, 18, 1);
+  .footer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    &--top {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &__logo {
+        a {
+          font-weight: 600;
+          font-size: 28px;
+          color: #fff;
+          transition: all 0.3s ease;
+          &:hover {
+            color: rgba(239, 39, 44, 1);
+          }
+        }
+        .active {
+          color: rgba(239, 39, 44, 1);
+        }
+      }
+      &__nav {
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        a {
+          font-weight: 500;
+          font-size: 16px;
+          color: #fff;
+          transition: all 0.3s ease;
+          &:hover {
+            color: rgba(239, 39, 44, 1);
+          }
+        }
+        .active {
+          color: rgba(239, 39, 44, 1);
+        }
+      }
+      &__icons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        a {
+          font-size: 28px;
+          color: #fff;
+          transition: all 0.3s ease;
+          &:hover {
+            color: rgba(239, 39, 44, 1);
+          }
+        }
+      }
+    }
+    hr {
+      width: 100%;
+      color: #fff;
+    }
+    &--bottom {
+      text-align: center;
+      h4 {
+        font-weight: 500;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 1);
+      }
+    }
+  }
+}
