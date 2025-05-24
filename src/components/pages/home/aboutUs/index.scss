@@ -10,7 +10,6 @@
       display: flex;
       gap: 40px;
       align-items: center; // Выравниваем по центру
-
       @media (max-width: 576px) {
         gap: 20px; // Уменьшаем отступ на маленьких экранах
       }
@@ -66,7 +65,7 @@
       p {
         max-width: 539px;
         color: #fff;
-
+    
         @media (max-width: 992px) {
           max-width: 100%; // Занимаем всю ширину
         }
