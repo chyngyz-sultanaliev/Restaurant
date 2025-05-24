@@ -4,6 +4,8 @@ import Interior from "../../components/pages/interior";
 import About from "../../components/pages/about";
 import Menu from "../../components/pages/menu";
 import Contacts from "../../components/pages/contacts";
+import Detail from "../pages/similar";
+import Similar from "../pages/detail";
 export const routes = [
   {
     id: 1,
@@ -29,6 +31,15 @@ export const routes = [
     id: 5,
     path: "/contacts",
     element: <Contacts />,
-  }
+  },
+  {
+    id: 6,
+    path: "/similar/:similarName",
+    element: <Detail />,
+  },
+  {
+    id: 7,
+    path: "/detail/:detailId",
+    element: <Similar />,
+  },
 ];
-
