@@ -1,0 +1,154 @@
+#delicious {
+  padding-bottom: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+
+  .delicious {
+    &--content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      height: 600px;
+      &__center {
+        margin-top: 184px;
+        width: 100%;
+        border-left: 0.2px solid rgba(255, 255, 255, 0.4);
+        border-right: 0.2px solid rgba(255, 255, 255, 0.4);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        color: rgba(255, 255, 255, 1);
+        animation: centerBorder 1.5s alternate ease-in-out;
+        @keyframes centerBorder {
+          0% {
+            width: 80%;
+          }
+        }
+        &--name {
+          display: flex;
+          align-items: center;
+          gap: 30px;
+          h3 {
+            font-family: "Shalimar", cursive;
+            font-weight: 400;
+            font-size: 40px;
+            color: rgba(255, 255, 255, 1);
+          }
+          img {
+            width: 68px;
+            animation: nameImg 1.5s alternate ease-in-out;
+            @keyframes nameImg {
+              0% {
+                transform: scale(0);
+              }
+            }
+          }
+        }
+        h1 {
+          font-weight: 600;
+          font-size: 64px;
+        }
+        p {
+          margin: 25px 0;
+          font-family: "League Spartan", sans-serif;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 1.1;
+          text-align: center;
+        }
+        &--btn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 5px;
+          hr {
+            border: 1.4px solid rgba(239, 39, 44, 1);
+            width: 170px;
+            animation: lineBtn 1.5s infinite ease-in-out;
+            @keyframes lineBtn {
+              0% {
+                transform: scale(1.1);
+              }
+              50% {
+                transform: scale(0.9);
+              }
+              100% {
+                transform: scale(1.1);
+              }
+            }
+          }
+          button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 220px;
+            height: 42px;
+            background: transparent;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 1);
+            letter-spacing: 1px;
+            border: 1.6px solid rgba(239, 39, 44, 1);
+            transition: 0.3s ease-in-out;
+            &:hover {
+              color: rgba(239, 39, 44, 1);
+              background: #fff;
+            }
+
+            &:active {
+              color: rgba(255, 255, 255, 1);
+              background: transparent;
+            }
+          }
+        }
+      }
+      &__bottom {
+        padding-bottom: 20px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 0.2px solid rgba(255, 255, 255, 0.4);
+        animation: withBotom 1.5s alternate ease-in-out;
+        @keyframes withBotom {
+          0% {
+            width: 80%;
+          }
+        }
+        &--text {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          h4 {
+            font-family: "League Spartan", sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.8px;
+            color: rgba(255, 255, 255, 1);
+          }
+          hr {
+            width: 60px;
+            border: 0.6px solid rgba(255, 255, 255, 0.6);
+          }
+          a {
+            color: rgba(239, 39, 44, 1);
+            font-size: 18px;
+            transition: 0.3s ease-in-out;
+            &:hover {
+              color: rgba(255, 255, 255, 1);
+            }
+          }
+          span {
+            font-family: "League Spartan", sans-serif;
+            font-size: 12px;
+            letter-spacing: 0.8px;
+            text-transform: capitalize;
+            color: rgba(255, 255, 255, 1);
+          }
+        }
+      }
+    }
+  }
+}
