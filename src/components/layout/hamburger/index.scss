@@ -1,0 +1,67 @@
+#hamburger {
+  display: none;
+  position: relative;
+  .hamburger-react {
+    color: #fff;
+    transition: color 0.3s ease-in-out;
+    &:hover {
+      color: rgba(239, 39, 44, 1);
+    }
+  }
+  .hamburger {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 260px;
+    background: linear-gradient(
+      180deg,
+      rgba(27, 32, 38, 0.4) 46.81%,
+      rgba(27, 32, 38, 0.8) 100.67%
+    );
+    backdrop-filter: blur(6px);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 999;
+    &--nav {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      a {
+        color: #fff;
+        font-size: 22px;
+        font-weight: 500;
+        transition: color 0.3s ease-in-out;
+        &:hover {
+          color: rgba(239, 39, 44, 1);
+        }
+      }
+      .active {
+        color: rgba(239, 39, 44, 1);
+      }
+      &__link {
+        display: flex;
+        align-items: start;
+        gap: 10px;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 500;
+        transition: color 0.3s ease-in-out;
+        cursor: pointer;
+        &:hover {
+          color: rgba(239, 39, 44, 1);
+        }
+        span {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #hamburger {
+    display: block;
+  }
+}

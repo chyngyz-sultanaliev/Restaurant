@@ -1,6 +1,7 @@
 import React from "react";
 import { CiSearch } from "react-icons/ci";
 import { NavLink } from "react-router-dom";
+import HamburgerMenu from "../hamburger/index";
 
 const Header = () => {
   return (
@@ -25,6 +26,7 @@ const Header = () => {
               <option value="en">EN</option>x<option value="ru">RU</option>
             </select>
           </nav>
+          <HamburgerMenu />
         </div>
       </div>
     </header>

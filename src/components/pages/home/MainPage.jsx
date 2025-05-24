@@ -4,6 +4,7 @@ import AboutUs from './aboutUs';
 import BestSellers from './bestSellers';
 import MainMenu from './mainMenu';
 import VisitRestaurant from './visitRestaurant';
+import ModernInterior from './modernInterior';
 
 const MainPage = () => {
     return (
@@ -11,6 +12,7 @@ const MainPage = () => {
         <Delicious/>
         <AboutUs/>
         <BestSellers/>
+        <ModernInterior/>
         <MainMenu/>
         <VisitRestaurant/>
         </>
