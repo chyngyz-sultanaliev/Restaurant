@@ -9,38 +9,43 @@ const Similar = () => {
   const product = [
     {
       id: 1,
-      title: "sasha",
+      title: "Ice Cream",
       url: detailslogo,
       category: "Desserts",
       price: "120",
+      desc: "soda,cream,milk,sugar",
     },
     {
       id: 2,
-      title: "sasha",
+      title: "Ice Cream",
       url: detailslogo,
       category: "Desserts",
       price: "120",
+      desc: "soda,cream,milk,sugar",
     },
     {
       id: 3,
-      title: "sasha",
+      title: "Ice Cream",
       url: detailslogo,
       category: "Hot Drinks",
       price: "130",
+      desc: "soda,cream,milk,sugar",
     },
     {
       id: 4,
-      title: "sasha",
+      title: "Ice Cream",
       url: detailslogo,
       category: "Cold Drinks",
       price: "140",
+      desc: "soda,cream,milk,sugar",
     },
     {
       id: 5,
-      title: "sasha",
+      title: "Ice Cream",
       url: detailslogo,
       category: "Fast foods",
       price: "150",
+      desc: "soda,cream,milk,sugar",
     },
   ];
 

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap");
 #similar {
   padding: 40px 0;
   .similar {
@@ -65,4 +66,58 @@
       }
     }
   }
+}
+@media (max-width: 990px) {
+  #similar .similar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  #similar .similar--blocks {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(10px, 4vw, 30px);
+    height: 100px;
+  }
+
+  #similar .similar--blocks__block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: clamp(33px, 6vw, 66px);
+    font-size: clamp(12p, 3vw, 24px);
+    background: #1f2731;
+    flex-shrink: 0;
+    // padding: 0 10px;
+  }
+}
+@media (max-width: 860px) {
+  #similar .similar--blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: clamp(10px, 2vw, 30px);
+    margin-bottom: 50px;
+    flex-shrink: 0;
+  }
+}
+@media (max-width: 600px) {
+  #similar .similar--blocks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    padding: 0 60px ;
+    width: clamp(150px, 70vw, 355px);
+    overflow-x: scroll;
+  }
+  #similar .similar--nav {
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
 }

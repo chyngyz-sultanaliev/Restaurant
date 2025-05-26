@@ -185,3 +185,39 @@
     }
   }
 }
+@media (max-width: 990px) {
+  #mainmenu .mainmenu--nav__right {
+    display: none;
+  }
+  #mainmenu .mainmenu--nav__left {
+    max-width: 100%;
+  }
+}
+@media (max-width: 890px) {
+  #mainmenu .mainmenu--nav__left {
+    max-width: 100%;
+    height: clamp(150px, 52vw, 420px);
+  }
+}
+@media (max-width: 790px) {
+  #mainmenu .mainmenu--nav__left {
+    max-width: 100%;
+    height: clamp(150px, 52vw, 420px);
+  }
+}
+@media (max-width: 690px) {
+  #mainmenu .mainmenu--nav__left {
+    max-width: 100%;
+    height: clamp(150px, 57vw, 420px);
+  }
+}
+@media (max-width: 550px) {
+  #mainmenu .mainmenu--nav__left {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: clamp(280px, 40vw, 373px);
+    height: clamp(300px, 64vw, 430px);
+    background: #1f2731;
+  }
+}
