@@ -1,10 +1,11 @@
 .best-sellers-section {
-  padding: 80px 0;
+
+  padding: 150px 0;
   color: #fff;
   overflow: hidden;
 
   .container {
-    max-width: 1200px;
+    max-width: 1070px;
     margin: 0 auto;
     padding: 0 15px;
     width: 100%;
@@ -115,10 +116,11 @@
 
       .dish-image {
         width: 100%;
-        height: auto;
+        max-width: 266px;
+        height: 281px;
         aspect-ratio: 3/4;
         object-fit: cover;
-        border-radius: 8px;
+        border-radius: 4px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease;
       }
