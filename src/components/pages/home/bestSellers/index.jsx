@@ -18,7 +18,7 @@ const BestSellers = () => {
       subtitle: "You Only Reserve Exception",
       description:
         "Each location has a menu that's curated just for them. See what's new at your Cafesio and You'll find Cafesio Covent Carden moments.",
-      images: [dish1, dish2, ],
+      images: [dish1, dish2],
     },
   ];
 
