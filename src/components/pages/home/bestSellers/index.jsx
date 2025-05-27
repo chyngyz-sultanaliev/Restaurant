@@ -1,126 +1,207 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import redrow from "../../../../assets/icons/redrow.svg";
-import dish1 from "../../../../assets/images/dish1.png";
-import dish2 from "../../../../assets/images/dish2.png";
 import sliderow from "../../../../assets/icons/slaiddish.svg";
 
 const BestSellers = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const sliderRef = useRef(null);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-
-  const bestSellers = [
-    {
-      id: 1,
-      title: "Best Sellers",
-      subtitle: "You Only Reserve Exception",
-      description:
-        "Each location has a menu that's curated just for them. See what's new at your Cafesio and You'll find Cafesio Covent Carden moments.",
-      images: [dish1, dish2],
-    },
-  ];
+  const [bestSellers, setBestSellers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 769); // Изменено на 769px
+    const fetchBestSellers = async () => {
+      try {
+        const response = await axios.get("http://13.53.173.252/en/seller/");
+        if (response.data && Array.isArray(response.data)) {
+          setBestSellers(response.data);
+        } else {
+          throw new Error("Данные не найдены или неправильный формат");
+        }
+      } catch (err) {
+        setError(err.message + " Ошибка загрузки данных");
+      } finally {
+        setLoading(false);
+      }
     };
-
-    checkIfMobile();
-    window.addEventListener("resize", checkIfMobile);
-
-    return () => {
-      window.removeEventListener("resize", checkIfMobile);
-    };
+    fetchBestSellers();
   }, []);
 
-  const handleTouchStart = (e) => {
-    if (!isMobile) return;
-    setStartX(e.touches[0].pageX - sliderRef.current.offsetLeft);
-    setScrollLeft(sliderRef.current.scrollLeft);
-  };
-
-  const handleTouchMove = (e) => {
-    if (!isMobile || !sliderRef.current) return;
-    e.preventDefault();
-    const x = e.touches[0].pageX - sliderRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    sliderRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === bestSellers[0].images.length - 1 ? 0 : prev + 1
-    );
-  };
-// ничего не пиши — просто удалите всё это
-  useEffect(() => {
-    if (isMobile) return;
-
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    const slideWidth = slider.children[0]?.offsetWidth;
-    if (slideWidth) {
-      slider.scrollTo({
-        left: currentSlide * (slideWidth + 15),
-        behavior: "smooth",
-      });
-    }
-  }, [currentSlide, isMobile]);
+  if (loading) return <div className="loading">Загрузка...</div>;
+  if (error) return <div className="error">Ошибка: {error}</div>;
+  if (!bestSellers.length) return <div>Нет популярных блюд</div>;
 
   return (
     <section id="bestSellers" className="best-sellers-section">
       <div className="container">
         <div className="best-sellers">
           {bestSellers.map((item) => (
-            <div key={item.id} className="best-sellers__content">
-              <div className="best-sellers__info">
-                <div className="title-wrapper">
-                  <img
-                    src={redrow}
-                    alt="Decoration arrow"
-                    className="arrow-icon"
-                  />
-                  <h1 className="title">{item.title}</h1>
-                </div>
-                <h2 className="subtitle">{item.subtitle}</h2>
-                <p className="description">{item.description}</p>
-              </div>
-
-              <div className="best-sellers__gallery-container">
-                <div
-                  className="gallery-wrapper"
-                  ref={sliderRef}
-                  onTouchStart={handleTouchStart}
-                  onTouchMove={handleTouchMove}
-                >
-                  {item.images.map((image, index) => (
-                    <div key={index} className="gallery-item">
-                      <img
-                        src={image}
-                        alt={`Best seller dish ${index + 1}`}
-                        className="dish-image"
-                        loading="lazy"
-                      />
-                    </div>
-                  ))}
-                </div>
-
-                <button
-                  className="slider-arrow"
-                  onClick={nextSlide}
-                  aria-label="Next slide"
-                >
-                  <img src={sliderow} alt="slider arrow" />
-                </button>
-              </div>
-            </div>
+            <BestSellerCard key={item.id} item={item} />
           ))}
         </div>
       </div>
     </section>
+  );
+};
+
+const BestSellerCard = ({ item }) => {
+  const images = item?.seller_images?.map((img) => img.seller_image) || [];
+  const [startIndex, setStartIndex] = useState(0);
+  const [fade, setFade] = useState(false);
+  const [modalImage, setModalImage] = useState(null); // для модалки
+
+  const handleNext = () => {
+    if (startIndex + 2 < images.length) {
+      setFade(true);
+      setTimeout(() => {
+        setStartIndex(startIndex + 2);
+        setFade(false);
+      }, 250);
+    } else {
+      alert(
+        "Бекенд добавил только 4 фотографии. Если хотите еще фото - скажите бекенду добавить."
+      );
+    }
+  };
+
+  const handlePrev = () => {
+    if (startIndex - 2 >= 0) {
+      setFade(true);
+      setTimeout(() => {
+        setStartIndex(startIndex - 2);
+
+        setFade(false);
+      }, 250);
+    }
+  };
+
+  const openModal = (image) => {
+    setModalImage(image);
+  };
+
+  const closeModal = () => {
+    setModalImage(null);
+  };
+
+  const visibleImages = images.slice(startIndex, startIndex + 2);
+
+  return (
+    <>
+      <div className="best-sellers__content">
+        <div className="best-sellers__info">
+          <div className="title-wrapper">
+            <img src={redrow} alt="Украшение" className="arrow-icon" />
+            <h1 className="title">{item.headline}</h1>
+          </div>
+          <h2 className="subtitle">{item.title}</h2>
+          <p className="description">{item.description}</p>
+        </div>
+        <div
+          className="best-sellers__gallery-container"
+          style={{ display: "flex", alignItems: "center", gap: "10px" }}
+        >
+          <div
+            className="gallery-wrapper"
+            style={{ display: "flex", gap: "10px" }}
+          >
+            {visibleImages.length ? (
+              visibleImages.map((image, index) => (
+                <div
+                  key={index}
+                  className="gallery-item"
+                  style={{ width: "150px", cursor: "pointer" }}
+                  onClick={() => openModal(image)}
+                >
+                  <img
+                    src={image}
+                    alt={`Блюдо №${startIndex + index + 1}`}
+                    className="dish-image"
+                    loading="lazy"
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </div>
+              ))
+            ) : (
+              <p>Изображения отсутствуют</p>
+            )}
+          </div>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+          >
+            {startIndex > 0 && (
+              <button
+                className="slider-arrow"
+                aria-label="Предыдущий слайд"
+                onClick={handlePrev}
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                <img
+                  src={sliderow}
+                  alt="Стрелка назад"
+                  style={{
+                    transform: "rotate(180deg)",
+                    width: "30px",
+                    height: "30px",
+                  }}
+                />
+              </button>
+            )}
+            {startIndex + 2 < images.length && (
+              <button
+                className="slider-arrow"
+                aria-label="Следующий слайд"
+                onClick={handleNext}
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                <img
+                  src={sliderow}
+                  alt="Стрелка вперед"
+                  style={{ width: "30px", height: "30px" }}
+                />
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Модальное окно */}
+      {modalImage && (
+        <div
+          onClick={closeModal}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "rgba(0,0,0,0.7)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
+            cursor: "pointer",
+          }}
+        >
+          <img
+            src={modalImage}
+            alt="Увеличенное изображение"
+            style={{ maxHeight: "90%", maxWidth: "90%", borderRadius: "8px" }}
+            onClick={(e) => e.stopPropagation()} // чтобы клик по картинке не закрывал модалку
+          />
+        </div>
+      )}
+    </>
   );
 };
 
