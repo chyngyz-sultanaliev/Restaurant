@@ -54,13 +54,7 @@ const BestSellers = () => {
       prev === bestSellers[0].images.length - 1 ? 0 : prev + 1
     );
   };
-
-  // const prevSlide = () => {
-  //   setCurrentSlide((prev) =>
-  //     prev === 0 ? bestSellers[0].images.length - 1 : prev - 1
-  //   );
-  // };
-
+// ничего не пиши — просто удалите всё это
   useEffect(() => {
     if (isMobile) return;
 

@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap");
+.product {
+  background: white;
+  width: clamp(150px, 29vw, 370px);
+  height: clamp(120px, 22vw, 250px);
+  img {
+    width: 100%;
+    height: 70%;
+  }
+  &--title {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h2 {
+      font-weight: 700;
+      font-size: clamp(12px, 2vw, 22px);
+      color: #1f2731;
+      span {
+        font-weight: 300;
+        font-size: clamp(10px, 2vw, 24px);
+        color: #626060;
+      }
+    }
+    h3 {
+      font-weight: 800;
+      font-size: clamp(10px, 3vw, 20px);
+      color: #ef272c;
+    }
+  }
+}
+@media (max-width: 650px) {
+  .product {
+    width: clamp(190px, 52vw, 570px);
+    height: clamp(100px, 10vw, 170px);
+    display: flex;
+    background: transparent;
+    align-items: center;
+    img {
+      width: 110px;
+      border-radius: 7px;
+      object-fit: contain;
+    }
+    margin: 0 auto;
+  }
+  .product--title {
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    h2 {
+      font-family: Spartan;
+      font-weight: 600;
+      font-size: 16px;
+      color: white;
+    }
+    h2 span {
+      font-weight: 300;
+      font-size: clamp(10px, 2vw, 24px);
+      color: white;
+    }
+  }
+}
