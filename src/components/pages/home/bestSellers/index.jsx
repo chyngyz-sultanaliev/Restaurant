@@ -2,16 +2,19 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import redrow from "../../../../assets/icons/redrow.svg";
 import sliderow from "../../../../assets/icons/slaiddish.svg";
+import { useContext } from "react";
+import { Restaurat } from "../../../../context";
 
 const BestSellers = () => {
   const [bestSellers, setBestSellers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { language } = useContext(Restaurat);
 
   useEffect(() => {
     const fetchBestSellers = async () => {
       try {
-        const response = await axios.get("http://13.53.173.252/en/seller/");
+        const response = await axios.get(`http://13.53.173.252/${language}/seller/`);
         if (response.data && Array.isArray(response.data)) {
           setBestSellers(response.data);
         } else {
@@ -24,7 +27,7 @@ const BestSellers = () => {
       }
     };
     fetchBestSellers();
-  }, []);
+  }, [language]);
 
   if (loading) return <div className="loading">Загрузка...</div>;
   if (error) return <div className="error">Ошибка: {error}</div>;
@@ -114,7 +117,7 @@ const BestSellerCard = ({ item }) => {
                   <img
                     src={image}
                     alt={`Блюдо №${startIndex + index + 1}`}
-                    className="dish-image"
+                    className={`dish-image ${fade ? "fade-out" : "fade-in"}`}
                     loading="lazy"
                     style={{
                       width: "100%",

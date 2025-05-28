@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import Img from "../../../../assets/images/Delicious.png";
 import Left from "../../../../assets/images/MainLogoLeft.svg";
 import Right from "../../../../assets/images/MainLogoRight.svg";
@@ -7,11 +7,14 @@ import { FaArrowRight } from "react-icons/fa";
 import { ImPhone } from "react-icons/im";
 import axios from "axios";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { Restaurat } from "../../../../context";
 const Delicious = () => {
   const [delicious, setDelicious] = useState([]);
+  const { language } = useContext(Restaurat);
 
   async function getDelicious() {
-    let res = await axios(`http://13.53.173.252/en/list/
+    let res = await axios(`http://13.53.173.252/${language}/list/
 `);
     const { data } = res;
     setDelicious(data);
@@ -20,7 +23,8 @@ const Delicious = () => {
 
   useEffect(() => {
     getDelicious();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language]);
   return (
     <div
       style={{
@@ -50,9 +54,9 @@ const Delicious = () => {
                 <p>{item.description}</p>
                 <div className="delicious--content__center--btn">
                   <hr />
-                  <button>
-                    Reserve Your Table <FaArrowRight />
-                  </button>
+                    <NavLink to={"/reserve"}>
+                      Reserve Your Table <FaArrowRight />
+                    </NavLink>
                   <hr />
                 </div>
               </div>

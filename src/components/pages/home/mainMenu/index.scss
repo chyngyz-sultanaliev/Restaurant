@@ -1,16 +1,28 @@
 #mainmenu {
-  padding: 40px 0;
+  padding-bottom: 30px;
   .mainmenu {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
     gap: 30px;
+    .title {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+      h1 {
+        font-size: 40px;
+        line-height: 50px;
+        color: hsl(0, 0%, 100%);
+        width: 550px;
+        text-align: center;
+      }
+    }
     &--img {
       display: flex;
       align-items: center;
       gap: 15px;
-      text-align: center;
       img {
         width: 68px;
         animation: nameUrl 1.5s alternate ease-in-out;
@@ -28,13 +40,12 @@
         color: #ffffff;
       }
     }
-    h1 {
-      font-family: Silk Serif;
-      font-size: 40px;
-      line-height: 100%;
-      color: #ffffff;
-    }
     &--nav {
+      h1 {
+        font-size: 40px;
+        line-height: 50px;
+        color: hsl(0, 0%, 100%);
+      }
       display: flex;
       align-items: flex-start;
       justify-content: space-evenly;
@@ -45,7 +56,7 @@
         align-items: center;
         flex-direction: column;
         width: clamp(280px, 40vw, 373px);
-        height: clamp(150px, 65vw, 420px);
+        height: clamp(150px, 65vw, 390px);
         background: #1f2731;
         &--h3 {
           display: flex;
@@ -112,18 +123,18 @@
             align-items: flex-end;
 
             p {
-              font-family: Spartan;
-              font-weight: 400;
-              font-size: 14px;
+              font-family: "League Spartan", sans-serif;
+              font-weight: 300;
+              font-size: 16px;
               line-height: 20px;
-              color: #ffffff;
+              color: rgba(255, 255, 255, 1);
               margin: 15px 0;
+              width: 460px;
             }
             a {
-              font-family: Silk Serif;
               font-weight: 600;
               color: #ffffff;
-              font-size: clamp(10px, 2vw, 20px);
+              font-size: clamp(10px, 2vw, 18px);
               text-decoration-line: underline;
               transition: 0.3s ease-in-out;
               &:hover {
@@ -188,8 +199,9 @@
   }
 }
 @media (max-width: 990px) {
-  #mainmenu .mainmenu--nav__right {
-    display: none;
+  #mainmenu .mainmenu--nav {
+    flex-direction: column;
+    align-items: center;
   }
   #mainmenu .mainmenu--nav__left {
     max-width: 100%;
@@ -205,6 +217,16 @@
   #mainmenu .mainmenu--nav__left {
     max-width: 100%;
     height: clamp(150px, 52vw, 420px);
+  }
+  #mainmenu .mainmenu--nav__right {
+    width: 360px;
+    p {
+      width: 300px;
+    }
+  }
+  #mainmenu .mainmenu .title h1 {
+    font-size: 26px;
+    width: 380px;
   }
 }
 @media (max-width: 690px) {

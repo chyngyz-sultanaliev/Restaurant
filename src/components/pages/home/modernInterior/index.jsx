@@ -11,18 +11,22 @@ import Right from "../../../../assets/images/MainLogoRight.svg";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useContext } from "react";
+import { Restaurat } from "../../../../context";
   
 const ModernInterior = () => {
   const [modernInterior, setModernInterior] = useState([]);
+  const {language} = useContext(Restaurat)
   async function getMoadernInterior() {
-    let res = await axios(`http://13.53.173.252/en/modern/`);
+    let res = await axios(`http://13.53.173.252/${language}/modern/`);
     const { data } = res;
     setModernInterior(data);
   }
 
   useEffect(() => {
     getMoadernInterior();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language]);
   return (
     <div id="modernInterior">
       <div className="container">
