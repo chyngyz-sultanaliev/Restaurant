@@ -5,7 +5,6 @@ import { Restaurat } from ".";
 import { useState } from "react";
 
 const RooteContext = ({ children }) => {
-  const [mainApi, setMainApi] = useState([]);
   const [product, setProduct] = useState([]);
   const [category, setCategory] = useState([]);
   const [categorys, setCategorys] = useState([]);
