@@ -38,6 +38,7 @@ const RooteContext = ({ children }) => {
     getMainMenu();
     getProduct();
     getCategory();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language]);
 
   return (

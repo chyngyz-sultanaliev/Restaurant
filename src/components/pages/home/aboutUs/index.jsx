@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import redrow from "../../../../assets/icons/redrow.svg";
+import { useContext } from "react";
+import { Restaurat } from "../../../../context";
 
 const AboutUs = () => {
   const [aboutData, setAboutData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const { language } = useContext(Restaurat);
   const fetchAboutData = async () => {
     try {
-      const response = await axios.get("http://13.53.173.252/en/about/");
+      const response = await axios.get(
+        `http://13.53.173.252/${language}/about/`
+      );
       if (response.data && response.data.length > 0) {
         setAboutData(response.data[0]);
       } else {
@@ -24,7 +28,8 @@ const AboutUs = () => {
 
   useEffect(() => {
     fetchAboutData();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language]);
 
   if (loading) return <div className="loading">Loading...</div>;
   if (error) return <div className="error">Error: {error}</div>;

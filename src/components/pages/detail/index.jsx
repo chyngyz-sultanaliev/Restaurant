@@ -7,7 +7,7 @@ import axios from "axios";
 const Detail = () => {
   const { detailId } = useParams();
   const [detail, setDetail] = useState(null);
-  const { product, categorys, language, setLanguage } = useContext(Restaurat);
+  const { product, categorys, language, } = useContext(Restaurat);
 
   async function getDetail() {
     const res = await axios(
@@ -18,6 +18,7 @@ const Detail = () => {
 
   useEffect(() => {
     getDetail();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [detailId]);
   console.log(detail);
 

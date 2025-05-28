@@ -1,13 +1,12 @@
 #aboutUs {
   .container {
-    max-width: 1070px;
+    max-width: 1170px;
     margin: 0 auto;
-
   }
 
   .aboutUs {
-    padding-top: 95px;
-
+    padding-top: 65px;
+    padding-bottom: 30px;
 
     @media (max-width: 768px) {
       padding-top: 60px; // Уменьшаем отступ на мобильных
@@ -54,10 +53,9 @@
       }
 
       h2 {
-        font-family: "Spartan", sans-serif;
         font-weight: 600;
         font-size: 40px;
-        max-width: 365px;
+        max-width: 385px;
         color: #fff;
 
         @media (max-width: 992px) {
@@ -71,9 +69,12 @@
       }
 
       p {
-        max-width: 539px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        max-width: 535px;
         color: #fff;
-
+        font-family: "Spartan", sans-serif;
         @media (max-width: 992px) {
           max-width: 100%; // Занимаем всю ширину
         }

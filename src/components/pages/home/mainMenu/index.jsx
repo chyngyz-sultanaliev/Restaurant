@@ -8,9 +8,9 @@ import { Restaurat } from "../../../../context";
 const MainMenu = () => {
   const { similarName } = useParams();
   const navigate = useNavigate();
-  const {  category, mainMenu } = useContext(Restaurat);
+  const {  category, mainMenu, language } = useContext(Restaurat);
 
-  console.log(category, "main");
+  console.log(mainMenu, "main");
 
   const [selectedCategory, setSelectedCategory] = useState(similarName || null);
 
@@ -33,16 +33,15 @@ const MainMenu = () => {
       <div className="container">
         <div className="mainmenu">
           {mainMenu.map((el) => (
-            <div key={el.id}>
+            <div className="title" key={el.id}>
               <div className="mainmenu--img">
                 <img src={mainlogo2} alt="logo left" />
                 <h2>{el.headline}</h2>
                 <img src={mainlogo} alt="logo right" />
               </div>
-              <h1>
-                Exceptional Quality. <br />
-                Delightfully Delicious
-              </h1>
+              <h1 >
+               {language ==="en" ? el.title.slice(10,100) :el.title.slice(12,100) }
+              </h1 >
             </div>
           ))}
 
@@ -65,7 +64,7 @@ const MainMenu = () => {
 
             <div className="mainmenu--nav__right">
               {filteredProducts.length > 0 ? (
-                filteredProducts.map((product, idx) => (
+                filteredProducts.slice(0,2).map((product, idx) => (
                   <div className="mainmenu--nav__right--block" key={idx}>
                     <div className="mainmenu--nav__right--block__h1">
                       <h1>{product.product_name}</h1>

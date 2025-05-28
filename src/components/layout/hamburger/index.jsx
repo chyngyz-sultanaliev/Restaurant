@@ -4,8 +4,11 @@ import "./index.scss";
 import Hamburger from "hamburger-react";
 import { NavLink } from "react-router-dom";
 import { LuSearch } from "react-icons/lu";
+import { useContext } from "react";
+import { Restaurat } from "../../../context";
 const HamburgerMenu = () => {
   const [open, setOpen] = useState(false);
+  const { language, setLanguage } = useContext(Restaurat);
 
   return (
     <div id="hamburger">
@@ -23,6 +26,14 @@ const HamburgerMenu = () => {
               </span>
               <a href="#">Search</a>
             </div>
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+            >
+              <option value="en">EN</option>
+              <option value="ru">RU</option>
+              <option value="ky">KY</option>
+            </select>
           </div>
         </div>
       )}

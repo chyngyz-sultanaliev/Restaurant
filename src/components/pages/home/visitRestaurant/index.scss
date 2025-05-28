@@ -171,10 +171,14 @@
   }
 }
 
+@media (max-width: 1312px) {
+  #visitRestaurant .visitRestaurant--block__left {
+    width: 400px;
+  }}
 @media (max-width: 1212px) {
   #visitRestaurant {
     .visitRestaurant--block__right {
-      width: 410px;
+      width: 400px;
     }
   }
 }

@@ -12,8 +12,8 @@ const MainPage = () => {
         <Delicious/>
         <AboutUs/>
         <BestSellers/>
-        <ModernInterior/>
         <MainMenu/>
+        <ModernInterior/>
         <VisitRestaurant/>
         </>
     );

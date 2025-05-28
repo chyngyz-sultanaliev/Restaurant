@@ -7,10 +7,14 @@ import { TfiEmail } from "react-icons/tfi";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useContext } from "react";
+import { Restaurat } from "../../../../context";
 
 const VisitRestaurant = () => {
   const [visitRestaurant, setVisitRestaurant] = useState([]);
   const restaurant = visitRestaurant[0] || {};
+  const {language} = useContext(Restaurat)
+
   const {
     headline,
     title,
@@ -20,7 +24,7 @@ const VisitRestaurant = () => {
   } = restaurant;
 
   async function getVisitRestaurant() {
-    let res = await axios(`http://13.53.173.252/ru/visit/
+    let res = await axios(`http://13.53.173.252/${language}/visit/
 `);
     const { data } = res;
     setVisitRestaurant(data);
@@ -28,7 +32,8 @@ const VisitRestaurant = () => {
 
   useEffect(() => {
     getVisitRestaurant();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language]);
   return (
     <div id="visitRestaurant">
       <div className="container">
