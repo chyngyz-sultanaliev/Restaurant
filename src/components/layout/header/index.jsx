@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CiSearch } from "react-icons/ci";
 import { NavLink } from "react-router-dom";
 import HamburgerMenu from "../hamburger/index";
+import { Restaurat } from "../../../context";
+const Header = () => {
+  const { language, setLanguage } = useContext(Restaurat);
 import Contacts from "../../pages/contacts";
 
 const Header = () => {
   
+
 
   return (
     <>
@@ -15,6 +19,18 @@ const Header = () => {
             <div className="header--logo">
               <NavLink to={"/"}>Restaurant</NavLink>
             </div>
+
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+            >
+              <option value="en">EN</option>
+              <option value="ru">RU</option>
+              <option value="ky">KY</option>
+            </select>
+          </nav>
+          <HamburgerMenu />
+
             <nav className="header--nav">
               <NavLink to={"/interior"}>Interior</NavLink>
               <NavLink to={"/about"}>About</NavLink>
@@ -33,6 +49,7 @@ const Header = () => {
             </nav>
             <HamburgerMenu />
           </div>
+
         </div>
       </header>
     </>
