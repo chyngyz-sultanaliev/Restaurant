@@ -29,6 +29,7 @@
       }
     }
     h1 {
+      font-family: Silk Serif;
       font-size: 40px;
       line-height: 100%;
       color: #ffffff;
@@ -57,6 +58,7 @@
             border: 1px solid #3f4347;
           }
           a {
+            font-family: Silk Serif;
             transition: 0.1s;
             width: 100%;
             font-weight: 600;
@@ -110,15 +112,15 @@
             align-items: flex-end;
 
             p {
+              font-family: Spartan;
               font-weight: 400;
-              // font-size: clamp(10px, 3vw, 19px);
               font-size: 14px;
-              // line-height: clamp(10px, 2vw, 20px);
               line-height: 20px;
               color: #ffffff;
               margin: 15px 0;
             }
             a {
+              font-family: Silk Serif;
               font-weight: 600;
               color: #ffffff;
               font-size: clamp(10px, 2vw, 20px);

@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CiSearch } from "react-icons/ci";
 import { NavLink } from "react-router-dom";
 import HamburgerMenu from "../hamburger/index";
+import { Restaurat } from "../../../context";
 
 const Header = () => {
+  const { language, setLanguage } = useContext(Restaurat);
+
+
   return (
     <header id="header">
       <div className="container">
@@ -22,8 +26,13 @@ const Header = () => {
                 <CiSearch />
               </h2>
             </div>
-            <select>
-              <option value="en">EN</option>x<option value="ru">RU</option>
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+            >
+              <option value="en">EN</option>
+              <option value="ru">RU</option>
+              <option value="ky">KY</option>
             </select>
           </nav>
           <HamburgerMenu />

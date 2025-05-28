@@ -13,16 +13,19 @@
     align-items: center;
     justify-content: space-between;
     h2 {
+      font-family: Spartan;
       font-weight: 700;
       font-size: clamp(12px, 2vw, 22px);
       color: #1f2731;
       span {
+        font-family: Spartan;
         font-weight: 300;
         font-size: clamp(10px, 2vw, 24px);
         color: #626060;
       }
     }
     h3 {
+      font-family: Spartan;
       font-weight: 800;
       font-size: clamp(10px, 3vw, 20px);
       color: #ef272c;
