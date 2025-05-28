@@ -4,7 +4,31 @@ import { FaArrowRight } from "react-icons/fa";
 import { RiInstagramFill, RiTelegram2Fill } from "react-icons/ri";
 import { MdPhoneInTalk } from "react-icons/md";
 import { TfiEmail } from "react-icons/tfi";
+import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
+
 const VisitRestaurant = () => {
+  const [visitRestaurant, setVisitRestaurant] = useState([]);
+  const restaurant = visitRestaurant[0] || {};
+  const {
+    headline,
+    title,
+    restaurant_address,
+    restaurant_time,
+    restaurant_contact,
+  } = restaurant;
+
+  async function getVisitRestaurant() {
+    let res = await axios(`http://13.53.173.252/ru/visit/
+`);
+    const { data } = res;
+    setVisitRestaurant(data);
+  }
+
+  useEffect(() => {
+    getVisitRestaurant();
+  }, []);
   return (
     <div id="visitRestaurant">
       <div className="container">
@@ -13,18 +37,22 @@ const VisitRestaurant = () => {
             <div className="visitRestaurant--block__left">
               <div className="visitRestaurant--block__left--title">
                 <img src={Left} alt="img" />
-                <h3>Visit Restaurant</h3>
+                <h3>{headline}</h3>
               </div>
-              <h1>Join Us for Happy Hours</h1>
+              <h1>{title}</h1>
               <div className="visitRestaurant--block__left--text">
-                <h3>Your neighborhood</h3>
-                <p>225$.Lake Ave.Suite 1150 Pasadena,CA 911101</p>
+                <h3>{restaurant_address?.title}</h3>
+                <p>{restaurant_address?.address}</p>
               </div>
               <div className="visitRestaurant--block__left--text">
-                <h3>Opening hours:</h3>
+                <h3>{restaurant_time?.title}</h3>
                 <p>
-                  Mon-Thu: 10:00 am - 01:00 am <br />
-                  Fri-Sun: 10:00 am - 02:00 am
+                  {restaurant_time?.day_range1}
+                  {restaurant_time?.open_time1.slice(0, 5)} am -
+                  {restaurant_time?.close_time1.slice(0, 5)} am <br />
+                  {restaurant_time?.day_range2}
+                  {restaurant_time?.open_time2.slice(0, 5)} am -
+                  {restaurant_time?.close_time2.slice(0, 5)} am
                 </p>
               </div>
               <div className="visitRestaurant--block__left--btn">
@@ -36,14 +64,14 @@ const VisitRestaurant = () => {
               </div>
             </div>
             <div className="visitRestaurant--block__right">
-              <h2>contact Info</h2>
-              <a href="#">
+              <h2>{restaurant_contact?.title}</h2>
+              <a href={`tel:${restaurant_contact?.phone_number}`}>
                 <MdPhoneInTalk />
-                <span>+771219900</span>
+                <span>{restaurant_contact?.phone_number}</span>
               </a>
-              <a href="#">
+              <a href={`email:${restaurant_contact?.mail}`} target="blank">
                 <TfiEmail />
-                <span>motionweb312@gmail.com</span>
+                <span>{restaurant_contact?.mail}</span>
               </a>
               <div className="visitRestaurant--block__right--icon">
                 <a href="#">

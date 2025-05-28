@@ -1,10 +1,10 @@
 .best-sellers-section {
-  padding: 80px 0;
+  padding: 150px 0;
   color: #fff;
   overflow: hidden;
 
   .container {
-    max-width: 1200px;
+    max-width: 1070px;
     margin: 0 auto;
     padding: 0 15px;
     width: 100%;
@@ -20,7 +20,6 @@
         flex-direction: row;
         align-items: center;
         gap: 60px;
-        
       }
     }
 
@@ -49,6 +48,10 @@
           font-weight: 400;
           margin: 0;
           color: #fff;
+
+          @media (max-width: 768px) {
+            font-size: 32px;
+          }
         }
       }
 
@@ -71,6 +74,10 @@
         margin: 0;
         opacity: 0.9;
         color: #fff;
+
+        @media (max-width: 768px) {
+          font-size: 12px;
+        }
       }
     }
 
@@ -78,65 +85,55 @@
       flex: 1;
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 10px;
       position: relative;
+
+      @media (max-width: 480px) {
+        gap: 5px;
+      }
     }
 
     .gallery-wrapper {
+      width: 100%;
+      max-width: 600px;
+      overflow: hidden;
       display: flex;
-      gap: 15px;
-      padding: 10px 0;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      width: calc(100% - 70px);
+      gap: 10px;
+      padding: 0;
 
-      &::-webkit-scrollbar {
-        display: none;
+      @media (max-width: 768px) {
+        max-width: 100%;
       }
     }
 
     .gallery-item {
-      flex: 0 0 auto;
-      scroll-snap-align: start;
-      width: 75vw;
-      max-width: 300px;
-      padding: 5px;
-      transition: transform 0.3s ease;
-
-      @media (min-width: 480px) {
-        width: 40vw;
-      }
-
-      @media (min-width: 769px) {
-        width: 280px;
-      }
+      flex: 0 0 50%; // чтобы 2 картинки занимали по половине ширины
+      max-width: 50%;
+      padding: 0;
 
       .dish-image {
         width: 100%;
-        height: auto;
-        aspect-ratio: 3/4;
+        height: 281px;
+        aspect-ratio: 3 / 4;
         object-fit: cover;
-        border-radius: 8px;
+        border-radius: 4px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease;
-      }
 
-      &:hover .dish-image {
-        transform: scale(1.03);
+        &:hover {
+          transform: scale(1.03);
+        }
       }
     }
 
     .slider-arrow {
-      display: none;
       background: none;
       border: none;
-      padding: 0;
       cursor: pointer;
       margin-left: 10px;
       flex-shrink: 0;
       align-self: center;
+      display: block;
 
       img {
         width: 50px;
@@ -148,8 +145,14 @@
         transform: scale(1.1);
       }
 
-      @media (min-width: 769px) {
-        display: block;
+      @media (max-width: 480px) {
+        width: 40px;
+        height: 40px;
+
+        img {
+          width: 40px;
+          height: 40px;
+        }
       }
     }
   }

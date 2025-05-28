@@ -8,6 +8,7 @@
       justify-content: space-between;
       flex-wrap: wrap;
       &__left {
+        width: 550px;
         height: 600px;
         display: flex;
         align-items: flex-start;
@@ -20,7 +21,7 @@
           h3 {
             font-family: "Shalimar", cursive;
             font-weight: 400;
-            font-size: 40px;
+            font-size: 35px;
             color: rgba(255, 255, 255, 1);
             text-transform: capitalize;
           }
@@ -36,7 +37,7 @@
         }
         h1 {
           font-weight: 600;
-          font-size: 40px;
+          font-size: 30px;
           color: rgba(255, 255, 255, 1);
         }
         &--text {
@@ -165,6 +166,57 @@
             border-radius: 3px;
           }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 1212px) {
+  #visitRestaurant {
+    .visitRestaurant--block__right {
+      width: 410px;
+    }
+  }
+}
+@media (max-width: 1112px) {
+  #visitRestaurant {
+    .visitRestaurant--block__right {
+      width: 360px;
+    }
+  }
+}
+@media (max-width: 1012px) {
+  #visitRestaurant .visitRestaurant--block__left {
+    width: 380px;
+  }
+  #visitRestaurant .visitRestaurant--block__left h1 {
+    font-weight: 600;
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+  }
+}
+@media (max-width: 912px) {
+  #visitRestaurant .visitRestaurant--block {
+    justify-content: center;
+    .visitRestaurant--block__left {
+      width: 100%;
+      h3{
+        font-size: 24px;
+      }
+      h1{
+        font-size: 24px;
+      }
+      p{
+        font-size: 16px;
+      }
+    }
+    .visitRestaurant--block__right {
+      width: 280px;
+      a span {
+        font-size: 16px;
+      }
+      h2{
+        font-size: 20px;
       }
     }
   }

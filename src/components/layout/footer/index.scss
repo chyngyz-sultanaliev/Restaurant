@@ -71,3 +71,21 @@
     }
   }
 }
+
+@media (max-width: 640px) {
+  #footer {
+    .footer {
+      
+      &--top {
+         &__logo {
+        a {
+          font-size: 22px;
+        }
+      }
+        &__nav {
+        display: none;
+        }
+      }
+    }
+  }
+}

@@ -2,9 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./index.scss";
 import Hamburger from "hamburger-react";
-import { FaRegUserCircle } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { MdOutlineShoppingCart } from "react-icons/md";
 import { LuSearch } from "react-icons/lu";
 const HamburgerMenu = () => {
   const [open, setOpen] = useState(false);
