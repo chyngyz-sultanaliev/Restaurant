@@ -4,6 +4,7 @@ import redrow from "../../../../assets/icons/redrow.svg";
 import sliderow from "../../../../assets/icons/slaiddish.svg";
 import { useContext } from "react";
 import { Restaurat } from "../../../../context";
+import API_BASE_URL from "../../../../config/api";
 
 const BestSellers = () => {
   const [bestSellers, setBestSellers] = useState([]);
@@ -14,7 +15,7 @@ const BestSellers = () => {
   useEffect(() => {
     const fetchBestSellers = async () => {
       try {
-        const response = await axios.get(`http://13.53.173.252/${language}/seller/`);
+        const response = await axios.get(`${API_BASE_URL}${language}/seller/`);
         if (response.data && Array.isArray(response.data)) {
           setBestSellers(response.data);
         } else {

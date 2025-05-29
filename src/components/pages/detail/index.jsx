@@ -3,32 +3,32 @@ import { NavLink, useParams } from "react-router-dom";
 import { Restaurat } from "../../../context";
 import Productcard from "../../ui/productcard/Productcard";
 import axios from "axios";
+import API_BASE_URL from "../../../config/api";
 
 const Detail = () => {
   const { detailId } = useParams();
   const [detail, setDetail] = useState(null);
-  const { product, categorys, language, } = useContext(Restaurat);
+  const { product, categorys, language } = useContext(Restaurat);
 
   async function getDetail() {
-    const res = await axios(
-      `http://13.53.173.252/${language}/product/${detailId}/`
-    );
+    const res = await axios(`${API_BASE_URL}${language}/product/${detailId}/`);
     setDetail(res.data);
   }
 
   useEffect(() => {
     getDetail();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [detailId]);
-  console.log(detail);
+  console.log(product, "dffsdz");
 
-  const similarProducts = product?.filter(
-    (el) =>
-      el.category_name === detail?.category_name &&
-      el.id.toString() !== detailId
+  if (!detail) {
+  return (
+    <div style={{ padding: '100px', textAlign: 'center' , color: "white" }}>
+      <h1 style={{marginBottom:"16px"}}>404 – Продукт не найден</h1>
+      <h3>Упс! Такого продукта нет.</h3>
+    </div>
   );
-
-  if (!detail) return <h2>Loading...</h2>;
+};
 
   return (
     <div id="detail">
@@ -109,13 +109,15 @@ const Detail = () => {
             <div className="detail--right__gueries">
               <h1>Similar Queries</h1>
               <div className="detail--right__gueries--content">
-                {similarProducts?.length > 0 ? (
-                  similarProducts.map((el) => (
+                {product
+                  .filter(
+                    (el) =>
+                      el.category?.category_name ===
+                      detail?.category?.category_name
+                  )
+                  .map((el) => (
                     <Productcard el={el} key={el.id} />
-                  ))
-                ) : (
-                  <h4>No similar products found.</h4>
-                )}
+                  ))}
               </div>
             </div>
           </div>

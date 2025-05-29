@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import { Restaurat } from ".";
 import { useState } from "react";
+import API_BASE_URL from "../config/api";
 
 const RooteContext = ({ children }) => {
   const [product, setProduct] = useState([]);
@@ -12,23 +13,23 @@ const RooteContext = ({ children }) => {
   const [language, setLanguage] = useState("en");
 
   async function getProduct() {
-    let res = await axios(`http://13.53.173.252/${language}/product/`);
+    let res = await axios(`${API_BASE_URL}${language}/product/`);
     const { data } = res;
     setProduct(data);
   }
   async function getCategory() {
-    let res = await axios(`http://13.53.173.252/${language}/categories/`);
+    let res = await axios(`${API_BASE_URL}${language}/categories/`);
     const { data } = res;
     setCategory(data);
   }
 
   async function getMainMenu() {
-    let res = await axios(`http://13.53.173.252/${language}/menu/`);
+    let res = await axios(`${API_BASE_URL}${language}/menu/`);
     setMainMenu(res.data);
   }
 
   async function getCategorys() {
-    let res = await axios(` http://13.53.173.252/${language}/category/`);
+    let res = await axios(` ${API_BASE_URL}${language}/category/`);
     const { data } = res;
     console.log(data, "logo");
     setCategorys(data);
