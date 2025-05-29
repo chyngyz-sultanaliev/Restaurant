@@ -3,6 +3,7 @@ import axios from "axios";
 import redrow from "../../../../assets/icons/redrow.svg";
 import { useContext } from "react";
 import { Restaurat } from "../../../../context";
+import API_BASE_URL from "../../../../config/api";
 
 const AboutUs = () => {
   const [aboutData, setAboutData] = useState(null);
@@ -12,7 +13,7 @@ const AboutUs = () => {
   const fetchAboutData = async () => {
     try {
       const response = await axios.get(
-        `http://13.53.173.252/${language}/about/`
+        `${API_BASE_URL}${language}/about/`
       );
       if (response.data && response.data.length > 0) {
         setAboutData(response.data[0]);

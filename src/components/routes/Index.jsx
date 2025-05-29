@@ -7,6 +7,7 @@ import Detail from "../pages/similar";
 import Similar from "../pages/detail";
 import VisitRestaurant from "../pages/home/visitRestaurant";
 import Contacts from "../pages/contacts";
+import NotFound from "../pages/notFound";
 export const routes = [
   {
     id: 1,
@@ -43,9 +44,14 @@ export const routes = [
     path: "/detail/:detailId",
     element: <Similar />,
   },
-   {
+  {
     id: 8,
     path: "/reserve",
     element: <Contacts />,
+  },
+  {
+    id: 9,
+    path: "*",
+    element: <NotFound />,
   },
 ];

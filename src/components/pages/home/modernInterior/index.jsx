@@ -13,12 +13,13 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { Restaurat } from "../../../../context";
+import API_BASE_URL from "../../../../config/api";
   
 const ModernInterior = () => {
   const [modernInterior, setModernInterior] = useState([]);
   const {language} = useContext(Restaurat)
   async function getMoadernInterior() {
-    let res = await axios(`http://13.53.173.252/${language}/modern/`);
+    let res = await axios(`${API_BASE_URL}${language}/modern/`);
     const { data } = res;
     setModernInterior(data);
   }

@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { Restaurat } from "../../../../context";
+import API_BASE_URL from "../../../../config/api";
 
 const VisitRestaurant = () => {
   const [visitRestaurant, setVisitRestaurant] = useState([]);
@@ -24,7 +25,7 @@ const VisitRestaurant = () => {
   } = restaurant;
 
   async function getVisitRestaurant() {
-    let res = await axios(`http://13.53.173.252/${language}/visit/
+    let res = await axios(`${API_BASE_URL}${language}/visit/
 `);
     const { data } = res;
     setVisitRestaurant(data);

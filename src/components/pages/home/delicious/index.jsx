@@ -9,22 +9,25 @@ import axios from "axios";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Restaurat } from "../../../../context";
+import API_BASE_URL from "../../../../config/api";
+
 const Delicious = () => {
   const [delicious, setDelicious] = useState([]);
   const { language } = useContext(Restaurat);
 
   async function getDelicious() {
-    let res = await axios(`http://13.53.173.252/${language}/list/
+    let res = await axios(`${API_BASE_URL}${language}/list/
 `);
     const { data } = res;
     setDelicious(data);
+    console.log(data);
   }
-  console.log(delicious);
 
   useEffect(() => {
     getDelicious();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language]);
+  
   return (
     <div
       style={{
@@ -42,7 +45,7 @@ const Delicious = () => {
     >
       <div className="container">
         <div className="delicious">
-          {delicious?.map((item, index) => (
+          {delicious.map((item, index) => (
             <div key={index} className="delicious--content">
               <div className="delicious--content__center">
                 <div className="delicious--content__center--name">
