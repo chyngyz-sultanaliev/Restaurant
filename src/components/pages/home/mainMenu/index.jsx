@@ -8,7 +8,7 @@ import { Restaurat } from "../../../../context";
 const MainMenu = () => {
   const { similarName } = useParams();
   const navigate = useNavigate();
-  const {  category, mainMenu, language } = useContext(Restaurat);
+  const { category, mainMenu, language } = useContext(Restaurat);
 
   console.log(mainMenu, "main");
 
@@ -39,9 +39,11 @@ const MainMenu = () => {
                 <h2>{el.headline}</h2>
                 <img src={mainlogo} alt="logo right" />
               </div>
-              <h1 >
-               {language ==="en" ? el.title.slice(10,100) :el.title.slice(12,100) }
-              </h1 >
+              <h1>
+                {language === "en"
+                  ? el.title.slice(10, 100)
+                  : el.title.slice(12, 100)}
+              </h1>
             </div>
           ))}
 
@@ -64,14 +66,14 @@ const MainMenu = () => {
 
             <div className="mainmenu--nav__right">
               {filteredProducts.length > 0 ? (
-                filteredProducts.slice(0,2).map((product, idx) => (
+                filteredProducts.slice(0, 2).map((product, idx) => (
                   <div className="mainmenu--nav__right--block" key={idx}>
                     <div className="mainmenu--nav__right--block__h1">
                       <h1>{product.product_name}</h1>
                       <h5>
                         . . . . . . . . . . . . . . . . . . . . . . . . . . . .
                       </h5>
-                      <h3>${product.price}</h3>
+                      <h3>${Math.floor(product.price)}</h3>
                     </div>
                     <div className="mainmenu--nav__right--block__text">
                       <p>{product.description}</p>
