@@ -11,7 +11,7 @@ const Productcard = ({ el }) => {
       </Link>
       <div className="product--title">
         <h2>
-          {el.product_name} <br />
+          {el.product_name} <br />  
              {el.product_ingradient?.slice(0,3).map((ing, idx) => (
           <span key={idx}>
             {ing.ingradient_name.length > 40
