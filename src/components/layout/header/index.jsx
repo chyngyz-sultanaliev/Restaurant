@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
 import { CiSearch } from "react-icons/ci";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import HamburgerMenu from "../hamburger/index";
 import { Restaurat } from "../../../context";
 import Contacts from "../../pages/contacts";
 
 const Header = () => {
   const { language, setLanguage } = useContext(Restaurat);
-
+  const nav = useNavigate();
+  const location = useLocation();
+  console.log(location.pathname);
+  
   return (
     <>
       <header id="header">
@@ -21,12 +24,19 @@ const Header = () => {
               <NavLink to={"/about"}>About</NavLink>
               <NavLink to={"/menu"}>Menu</NavLink>
               <NavLink to={"/contacts"}>Contacts</NavLink>
-              <div className="header--nav__search">
-                <input type="text" placeholder="Search" />
-                <h2 className="header--nav__search--icon">
-                  <CiSearch />
-                </h2>
-              </div>
+              {location.pathname === "/search" ? null : (
+                <div className="header--nav__search">
+                  <input
+                    onClick={() => nav("/search")}
+                    type="text"
+                    placeholder="Search"
+                  />
+                  <h2 className="header--nav__search--icon">
+                    <CiSearch />
+                  </h2>
+                </div>
+              )}
+
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
