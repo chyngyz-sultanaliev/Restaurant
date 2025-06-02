@@ -219,10 +219,7 @@
     height: clamp(150px, 52vw, 420px);
   }
   #mainmenu .mainmenu--nav__right {
-    width: 360px;
-    p {
-      width: 300px;
-    }
+  display: none;
   }
   #mainmenu .mainmenu .title h1 {
     font-size: 26px;

@@ -4,6 +4,7 @@ import { Restaurat } from "../../../context";
 import Productcard from "../../ui/productcard/Productcard";
 import axios from "axios";
 import API_BASE_URL from "../../../config/api";
+import { IoCloseCircleOutline } from "react-icons/io5";
 
 const Detail = () => {
   const { detailId } = useParams();
@@ -34,6 +35,7 @@ const Detail = () => {
     <div id="detail">
       <div className="container">
         <div className="detail">
+          <NavLink className={"detail--btn"} to={"/"} ><IoCloseCircleOutline /></NavLink>
           <div className="detail--blocks">
             {categorys.map((cat, index) => (
               <div className="detail--blocks__block" key={index}>
@@ -43,7 +45,6 @@ const Detail = () => {
               </div>
             ))}
           </div>
-
           <div className="detail--right">
             <div className="detail--right__extras">
               <div className="detail--right__extras--content">
