@@ -47,6 +47,7 @@ const Delicious = () => {
         <div className="delicious">
           {delicious.map((item, index) => (
             <div key={index} className="delicious--content">
+              <hr className="delicious--content__top" />
               <div className="delicious--content__center">
                 <div className="delicious--content__center--name">
                   <img src={Left} alt="" />

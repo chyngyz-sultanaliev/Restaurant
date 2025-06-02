@@ -4,16 +4,23 @@
 
   .delicious {
     &--content {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-direction: column;
       height: 600px;
+      &__top {
+        width: 350px;
+        border: 0.1px solid rgba(255, 255, 255, 0.4);
+        position: absolute;
+        right: 0;
+        top: 40px;
+      }
       &__center {
         margin-top: 184px;
         width: 100%;
         border-left: 0.2px solid rgba(255, 255, 255, 0.4);
-        border-right: 0.2px solid rgba(255, 255, 255, 0.4);
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -49,6 +56,7 @@
           font-size: 64px;
         }
         p {
+          width: 500px;
           margin: 25px 0;
           font-family: "League Spartan", sans-serif;
           font-weight: 500;
@@ -92,7 +100,7 @@
             letter-spacing: 1px;
             border: 1.6px solid rgba(239, 39, 44, 1);
             transition: 0.3s ease-in-out;
-            
+
             &:hover {
               color: rgba(239, 39, 44, 1);
               background: #fff;
@@ -161,14 +169,15 @@
 
 @media (max-width: 490px) {
   #delicious .delicious--content__center {
-    h3{
+    h3 {
       font-size: 28px;
     }
-    h1{
+    h1 {
       font-size: 32px;
     }
     p {
       font-size: 12px;
+      width: 300px;
     }
   }
   #delicious .delicious--content__bottom {

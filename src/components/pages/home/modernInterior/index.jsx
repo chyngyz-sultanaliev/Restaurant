@@ -78,6 +78,38 @@ const ModernInterior = () => {
                 />
               </Zoom>
             </div>
+              <div className="modernInterior--block__center">
+              <div className="modernInterior--block__center--top">
+                <Zoom>
+                  <img
+                    src={modernInterior[0]?.interior_images[1]?.interior_image}
+                    alt="img"
+                  />
+                </Zoom>
+              </div>
+              <div className="modernInterior--block__center--bottom">
+                <Zoom>
+                  <img
+                    src={modernInterior[0]?.interior_images[2]?.interior_image}
+                    alt="img"
+                  />
+                </Zoom>
+                <Zoom>
+                  <img
+                    src={modernInterior[0]?.interior_images[3]?.interior_image}
+                    alt="img"
+                  />
+                </Zoom>
+              </div>
+            </div>
+            <div className="modernInterior--block__right">
+              <Zoom>
+                <img
+                  src={modernInterior[0]?.interior_images[4]?.interior_image}
+                  alt="img"
+                />
+              </Zoom>
+            </div>
           </div>
         </div>
       </div>

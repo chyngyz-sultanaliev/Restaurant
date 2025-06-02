@@ -54,10 +54,10 @@ const VisitRestaurant = () => {
                 <h3>{restaurant_time?.title}</h3>
                 <p>
                   {restaurant_time?.day_range1}
-                  {restaurant_time?.open_time1.slice(0, 5)} am -
+                  {restaurant_time?.open_time1.slice(0, 5)} am 
                   {restaurant_time?.close_time1.slice(0, 5)} am <br />
                   {restaurant_time?.day_range2}
-                  {restaurant_time?.open_time2.slice(0, 5)} am -
+                  {restaurant_time?.open_time2.slice(0, 5)} am 
                   {restaurant_time?.close_time2.slice(0, 5)} am
                 </p>
               </div>

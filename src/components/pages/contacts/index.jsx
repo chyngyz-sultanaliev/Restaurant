@@ -1,9 +1,10 @@
 import axios from "axios";
 import React from "react";
+import { useRef } from "react";
 import { useState } from "react";
 import { FaPhone, FaUserEdit } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const Contacts = () => {
@@ -13,7 +14,8 @@ const Contacts = () => {
   });
 
   const { name, phone } = userData;
-
+  const nav = useNavigate();
+  const cardRef = useRef();
   const Submit = async () => {
     const my_id = "-1002597947748";
     const token = "7931060770:AAEdgGi4MAjnFVqMltVdmXXg4WjloZAsNqA";
@@ -71,10 +73,15 @@ const Contacts = () => {
       });
     }
   };
+  const handleClickOutside = (e) => {
+    if (cardRef.current && !cardRef.current.contains(e.target)) {
+      nav("/");
+    }
+  };
   return (
-    <div id="contact">
+    <div id="contact" onClick={handleClickOutside}>
       <div className="contact">
-        <div className="contact__card">
+        <div ref={cardRef} className="contact__card">
           <div className="contact__card--group">
             <div className="icon">
               <FaUserEdit />

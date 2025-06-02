@@ -19,7 +19,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     &__card {
       position: relative;
       background: #1e252e;
@@ -30,7 +29,6 @@
       flex-direction: column;
       gap: 1.5rem;
       width: 300px;
-
       &--group {
         display: flex;
         align-items: center;

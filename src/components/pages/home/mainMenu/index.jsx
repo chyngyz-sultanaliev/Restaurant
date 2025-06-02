@@ -27,6 +27,7 @@ const MainMenu = () => {
       selectedCategory ? el.category_name === selectedCategory : true
     )
     .flatMap((el) => el.menu_product || []);
+console.log(similarName);
 
   return (
     <div id="mainmenu">
@@ -66,7 +67,7 @@ const MainMenu = () => {
 
             <div className="mainmenu--nav__right">
               {filteredProducts.length > 0 ? (
-                filteredProducts.slice(0, 2).map((product, idx) => (
+                filteredProducts.slice(0, 5).map((product, idx) => (
                   <div className="mainmenu--nav__right--block" key={idx}>
                     <div className="mainmenu--nav__right--block__h1">
                       <h1>{product.product_name}</h1>
@@ -76,7 +77,7 @@ const MainMenu = () => {
                       <h3>${Math.floor(product.price)}</h3>
                     </div>
                     <div className="mainmenu--nav__right--block__text">
-                      <p>{product.description}</p>
+                      <p>{product.description.slice(0, 120)}</p>
                       <a href="#">Order Now</a>
                     </div>
                   </div>
@@ -91,7 +92,7 @@ const MainMenu = () => {
             <hr />
             <button
               onClick={() =>
-                navigate("/similar/" + (selectedCategory || "all"))
+                navigate(`similar/${category[0]?.category_name}`)
               }
             >
               View Full menu <FaArrowRight />
