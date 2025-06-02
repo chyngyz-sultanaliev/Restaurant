@@ -8,6 +8,7 @@ import Similar from "../pages/detail";
 import VisitRestaurant from "../pages/home/visitRestaurant";
 import Contacts from "../pages/contacts";
 import NotFound from "../pages/notFound";
+import Search from "../ui/search/Search";
 export const routes = [
   {
     id: 1,
@@ -53,5 +54,10 @@ export const routes = [
     id: 9,
     path: "*",
     element: <NotFound />,
+  },
+   {
+    id: 10,
+    path: "/search",
+    element: <Search />,
   },
 ];

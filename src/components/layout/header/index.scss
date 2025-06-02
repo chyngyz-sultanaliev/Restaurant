@@ -1,13 +1,10 @@
 #header {
   padding: 30px 0;
-  background: linear-gradient(
-    180deg,
-    rgba(27, 32, 38, 0.4) 46.81%,
-    rgba(27, 32, 38, 0.8) 100.67%
-  );
+  background: rgba(27, 32, 38, 1);
+  border-bottom: 0.6px solid white;
   backdrop-filter: blur(6px);
   position: sticky;
-  z-index: 4;
+  z-index: 99;
   top: 0;
   left: 0;
   .header {
@@ -100,7 +97,6 @@
     }
   }
 }
-
 
 @media (max-width: 900px) {
   #header {

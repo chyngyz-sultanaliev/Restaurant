@@ -1,7 +1,5 @@
 #delicious {
   padding-bottom: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.6);
-
   .delicious {
     &--content {
       position: relative;
@@ -165,6 +163,9 @@
   #delicious .delicious--content__center h1 {
     font-size: 42px;
   }
+   #delicious .delicious--content__center p{
+    width: 400px;
+   }
 }
 
 @media (max-width: 490px) {
